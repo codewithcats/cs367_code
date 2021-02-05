@@ -20,7 +20,7 @@ if __name__ == "__main__":
     hostname = "localhost"
     port = 8082
     webServer = HTTPServer((hostname, port), SimpleServer)
-    print(f"Starting Python server at port 8082")
+    print("Starting Python server at port 8082")
 
     try:
         webServer.serve_forever()
