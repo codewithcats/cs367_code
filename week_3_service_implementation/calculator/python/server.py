@@ -9,7 +9,7 @@ class SimpleServer(BaseHTTPRequestHandler):
         # Handle GET request and send response
 
         if self.path.startswith("/divide"):
-            self.add()
+            self.divide()
         else:
             self.send_response(404)
             self.send_header("Content-type", "text/html")
@@ -17,7 +17,7 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.wfile.write(
                 bytes("<body>Page not found.</body></html>", "utf-8"))
 
-    def add(self):
+    def divide(self):
         parsed_path = urlparse(self.path)
         query = parse_qs(parsed_path.query)
 
