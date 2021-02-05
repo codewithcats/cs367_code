@@ -19,10 +19,11 @@ class SimpleServer(BaseHTTPRequestHandler):
 
     def add(self):
         parsed_path = urlparse(self.path)
-
         query = parse_qs(parsed_path.query)
+
         x = Decimal(query["x"][0])
         y = Decimal(query["y"][0])
+        result = x / y
 
         self.send_response(200)
 
@@ -31,7 +32,7 @@ class SimpleServer(BaseHTTPRequestHandler):
 
         self.wfile.write(bytes("<body>", "utf-8"))
         self.wfile.write(
-            bytes(str(x / y), "utf-8"))
+            bytes(str(result), "utf-8"))
         self.wfile.write(bytes("</body></html>", "utf-8"))
 
 
