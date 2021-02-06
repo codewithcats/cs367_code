@@ -10,10 +10,8 @@ class SimpleServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        self.wfile.write(bytes("<body>", "utf-8"))
         self.wfile.write(
             bytes("Hello from Python!", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
 
 
 if __name__ == "__main__":
