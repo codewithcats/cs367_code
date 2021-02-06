@@ -8,7 +8,7 @@ function minus(req, res) {
   const y = parseFloat(q.y);
   const result = x - y;
 
-  res.writeHead(200, { "Content-Type": "text/html" });
+  res.writeHead(200, { "Content-Type": "text/plain" });
   res.write(result.toString());
   res.end();
 }
@@ -20,7 +20,7 @@ http
       minus(req, res);
     } else {
       res.writeHead(404, { "Content-Type": "text/html" });
-      res.write("Page not found.");
+      res.write("Mai mee na ja");
       res.end();
     }
   })

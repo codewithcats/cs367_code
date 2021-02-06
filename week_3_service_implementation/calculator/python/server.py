@@ -12,10 +12,10 @@ class SimpleServer(BaseHTTPRequestHandler):
             self.divide()
         else:
             self.send_response(404)
-            self.send_header("Content-type", "text/html")
+            self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(
-                bytes("<body>Page not found.</body></html>", "utf-8"))
+                bytes("Page not found.", "utf-8"))
 
     def divide(self):
         parsed_path = urlparse(self.path)
@@ -30,10 +30,8 @@ class SimpleServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        self.wfile.write(bytes("<body>", "utf-8"))
         self.wfile.write(
             bytes(str(result), "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
 
 
 if __name__ == "__main__":
