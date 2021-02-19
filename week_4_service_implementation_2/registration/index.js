@@ -30,6 +30,20 @@ app.get("/course/:courseId/students", (req, res) => {
   res.json(students);
 });
 
+app.delete("/course/:courseId/student/:studentId", async (req, res) => {
+  const courseId = req.params.courseId;
+  const studentId = req.params.studentId;
+  const courseStudents = registrations[courseId] || [];
+  const index = courseStudents.indexOf(studentId);
+  if (index < 0) {
+    res.status(404).end();
+    return;
+  }
+
+  courseStudents.splice(index, 1);
+  res.status(200).end();
+});
+
 app.listen(8002, () => {
   console.log(`Registration service is running at http://localhost:8002`);
 });
