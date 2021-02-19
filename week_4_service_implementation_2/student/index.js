@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/students", (req, res) => {
-  res.json(students);
+  res.json(Object.values(students));
 });
 
 app.post("/student", (req, res) => {
