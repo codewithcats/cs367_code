@@ -13,6 +13,13 @@ app.get("/students", (req, res) => {
 });
 
 app.post("/student", (req, res) => {
+  const student = req.body;
+  if (!student.id) {
+    res.status(400);
+    res.json({ error: "Student must have an ID." });
+    return;
+  }
+
   students[req.body.id] = req.body;
   res.status(201);
   res.json(req.body);
