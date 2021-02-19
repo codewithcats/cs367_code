@@ -19,7 +19,7 @@ app.post("/student", (req, res) => {
 });
 
 app.put("/student/:id", (req, res) => {
-  console.log(req.params.id);
+  students[req.body.id] = req.body;
   res.json(req.body);
 });
 
