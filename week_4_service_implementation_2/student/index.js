@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+app.use(express.json());
 
 const students = [
   {
@@ -14,6 +15,11 @@ app.get("/", (req, res) => {
 
 app.get("/students", (req, res) => {
   res.json(students);
+});
+
+app.post("/student", (req, res) => {
+  console.log("body", req.body);
+  res.json(req.body);
 });
 
 app.listen(8000, () => {
