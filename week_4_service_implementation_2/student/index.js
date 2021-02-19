@@ -18,7 +18,8 @@ app.get("/students", (req, res) => {
 });
 
 app.post("/student", (req, res) => {
-  console.log("body", req.body);
+  students.push(req.body);
+  res.status(201);
   res.json(req.body);
 });
 
