@@ -2,12 +2,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const students = [
-  {
-    id: "4809613106",
-    name: "Tanawat",
-  },
-];
+const students = {};
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello" });
@@ -18,8 +13,13 @@ app.get("/students", (req, res) => {
 });
 
 app.post("/student", (req, res) => {
-  students.push(req.body);
+  students[req.body.id] = req.body;
   res.status(201);
+  res.json(req.body);
+});
+
+app.put("/student/:id", (req, res) => {
+  console.log(req.params.id);
   res.json(req.body);
 });
 
