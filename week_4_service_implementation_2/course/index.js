@@ -30,6 +30,16 @@ app.put("/course/:id", (req, res) => {
   res.json(req.body);
 });
 
+app.get("/course/:id", (req, res) => {
+  const course = courses[req.params.id];
+  if (!course) {
+    res.status(404).end();
+    return;
+  }
+
+  res.json(course);
+});
+
 app.delete("/course/:id", (req, res) => {
   delete courses[req.params.id];
   res.status(200).end();

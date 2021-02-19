@@ -30,6 +30,16 @@ app.put("/student/:id", (req, res) => {
   res.json(req.body);
 });
 
+app.get("/student/:id", (req, res) => {
+  const student = students[req.params.id];
+  if (!student) {
+    res.status(404).end();
+    return;
+  }
+
+  res.json(student);
+});
+
 app.delete("/student/:id", (req, res) => {
   console.log(students);
   delete students[req.params.id];
