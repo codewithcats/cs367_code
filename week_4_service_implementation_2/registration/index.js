@@ -15,6 +15,12 @@ app.post("/course/:courseId", (req, res) => {
   res.status(200).end();
 });
 
+app.get("/course/:courseId/students", (req, res) => {
+  const courseId = req.params.courseId;
+  const students = registrations[courseId] || [];
+  res.json(students);
+});
+
 app.listen(8002, () => {
   console.log(`Registration service is running at http://localhost:8002`);
 });
