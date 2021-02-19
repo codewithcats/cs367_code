@@ -26,8 +26,14 @@ app.post("/student", (req, res) => {
 });
 
 app.put("/student/:id", (req, res) => {
-  students[req.body.id] = req.body;
+  students[req.params.id] = req.body;
   res.json(req.body);
+});
+
+app.delete("/student/:id", (req, res) => {
+  console.log(students);
+  delete students[req.params.id];
+  res.status(200).end();
 });
 
 app.listen(8000, () => {
